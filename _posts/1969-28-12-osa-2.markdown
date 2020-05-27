@@ -53,7 +53,7 @@ GitHub puolestaan on myöhemmin kehitetty palvelu, jonka avulla voidaan säilytt
 
 Gittiä ja GitHubia käytetään yleisesti sekä työelämässä että harrastusprojekteissa. Käyttö ei rajoitu pelkästään koodiin, vaan niiden avulla voidaan tallentaa muutakin varmentamisen arvoista tietoa.  Kaikkien tiedostomuotojen versionhallintaan Git ei kuitenkaan sovellu.  Esimerkiksi Microsoft Office ohjelmien  tallennusmuodot ja kuvatiedostot eivät sovellu Gitin avulla hallittavaksi. Git onkin alunperin rakennettu tekstimuotoisten tiedostojen versionhallintajärjestelmäksi. Tämän takia Git onkin suosittu versiohallintajärjestelmä sovelluskehittäjien keskuudessa.  
 
-[Gitin asentaminen](/assets/git_asennus.jpg)  
+![Gitin asentaminen](/assets/git_asennus.jpg)  
 
 <div class="exercise">
 <h3>Tehtävä 1: Github-tunnuksen luominen</h3>
