@@ -64,4 +64,4 @@ Materiaali on rakennettu niin, että sitä voi seurata tehden esimerkit samalla.
 
 ## Kiitokset
 
-Tämä materiaali on luotu Janne Lofjelmin rakentaman kurssin pohjalta. Alkuperäinen kurssi löytyy [täältä](https://tkt-lapio.github.io/) Suuret kiitokset alkuperäisen kurssin tekijälle!
+Tämä materiaali on luotu Janne Lofhjelmin rakentaman kurssin pohjalta. Alkuperäinen kurssi löytyy [täältä](https://tkt-lapio.github.io/) Suuret kiitokset alkuperäisen kurssin tekijälle!
