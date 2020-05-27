@@ -16,8 +16,8 @@
 title: Tietokone työvälineenä
 email: jouni.jokelainen@riveria.fi
 description: >- # this means to ignore newlines until "baseurl:"
-baseurl: 'tkt-lapio' # the subpath of your site, e.g. /blog
-url: https://jounijokelainen.github.io/
+baseurl: '' # the subpath of your site, e.g. /blog
+url: https://githubsivut.github.io/
 # github_username: tkt-lapio
 favicon: /favicon.ico
 webmaster_verifications:
