@@ -282,9 +282,9 @@ caeb5b7 (HEAD -> master, sivuhaara) Lisätty tiedosto sivuhaarassa
 0df3ddc eka commit
 ````
 
-Head eli pointteri osoittaa nyt samaan committiin sekä master että sivuhaara brancheissa ja _tiedosto_sivuhaarasta.txt_ tiedosto löytyy työkansiosta.
+Head eli pointteri osoittaa nyt samaan committiin sekä master että sivuhaara brancheissä ja _tiedosto_sivuhaarasta.txt_ tiedosto löytyy työkansiosta.
 
-Poistetaan turha sivuhaara bransh komennolla `git branch -d  sivuhaara`
+Poistetaan turha sivuhaara branch komennolla `git branch -d  sivuhaara`
 
 ````
 $ git branch -d sivuhaara
@@ -293,9 +293,8 @@ Deleted branch sivuhaara (was caeb5b7).
 
 
 
-
 <div class="exercise">
-<h3>Tehtävä 3: Committien harjoittelua</h3>
+<h3>Tehtävä 3.1: Committien harjoittelua</h3>
 <ol>
 <li>Luo kansio komentorivillä ja tee siitä Git-projekti.</li>
 <li>Luo projektikansioosi tiedosto nimeltä <code>tietokoneen_nimi.txt</code>. Lisää sinne tietokoneesi hostname nimi komennolla <code>hostname >> tietokoneen_nimi.txt</code>.</li>
@@ -306,6 +305,16 @@ Deleted branch sivuhaara (was caeb5b7).
 <li>Lisää tietokoneen_nimi.txt tiedoston viimeiselle riville vielä päivämäärä komennolla <code>date >> tietokoneen_nimi.txt</code>, ja tee vielä yksi commit. Käytä muutoksen lisäämisessä seuraavaan committiin komentoa <code>git add -p</code>.</li>
 <li>Tarkista, että kaikki commitit näkyvät <code>git log</code>-komennolla.</li>
 </ol>
+<h3>Tehtävä 3.2: Branch harjoittelua</h3> 
+<ol>
+<li>Luo uusi projektiisi uusi branch nimeltä <code>uusiominaisuus</code>.</li>  
+<li>Siirry edellä luomaasi uuteen branchiin ja luo työkansioon uusi tiedosto nimeltä <code>featureb.txt</code>. Aseta tiedoston sisällöksi haluamasi tekstinpätkä</li>
+<li>Lisää em. tiedosto seuraavaan committiin ja tee uusi commit</li>
+<li>Siirry takaisin <code>master</code> branchiin</li>
+<li>Selvitä miten voit kopioida edellä luodun <code>featureb.txt</code>tiedoston<code>uusiominaisuus</code> branchistä <code>master</code> branchiin yhdistämättä kuitenkaan brancheja keskenään <code>merge</code> komennon avulla.</li>
+<li>Poista uusiominaisuus <code>branch</code></li>
+</ol>
+
 
 
 <div class="note">
@@ -319,7 +328,7 @@ Jos committia luodessa tulostuu virheviesti <code>error: cannot run : No such fi
 <li>Selvitä, miten saat poistettua muutoksen tilasta, jossa olet lisäämässä sitä committiin (näkyy vihreänä tulostuksessa), ja siirrettyä muutoksen otsikon <code>Changes not staged for commit</code> alle? Vinkki: <code>git status</code> auttaa.</li>
 <li>Lisää tiedoston tietokoneen_nimi.txt viimeiselle riville nykyinen kellonaika , ja aseta muutokset lisättäväksi seuraavaan committiin (<code>Changes to be commited</code>). <strong>Älä kuitenkaan paketoi committia.</strong></li>
 <li>Poista sen jälkeen muutokset seuraavasta commitista.</li>
-<li>Poista sen jälkeen kellonaika myös varsinaisesta tiedostosta Gitin tarvittavaa komentoa käyttäen niin, että kun avaat tietokoneen_nimi.txt tiedoston, kellonaika on poistettu.</li>
+<li>Poista sen jälkeen kellonaika myös varsinaisesta tiedostosta Gitin tarvittavaa komentoa käyttäen niin, että kun avaat <code>tietokoneen_nimi.txt</code> tiedoston, kellonaika on poistettu.</li>
 </ol>
 </div>
 
