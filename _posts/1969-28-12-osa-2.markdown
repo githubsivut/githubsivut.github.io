@@ -225,13 +225,7 @@ nothing added to commit but untracked files present (use "git add" to track)
 
 Commitoidut muutokset eivät siis enää näy status tulosteessa. Ne eivät kuitenkaan ole hävinneet: ne on vain siirretty commit komennon kautta .git kansiossa olevaan Git tietokantaan. Komennolla `git log` pystyt tarkastelemaan luotuja committeja:
 
-```
-commit 51bf544c786a671c28f70713b6cb33d87cc38
-Author:Etunimi Sukunimi
-Date:18.5.2020
 
-    Lisätty eka_tiedosto.txt
-```
 
 Komento `git log` siis tulostaa commitin tekijän, luontiajan, sekä commitille annetun otsikon. Jokaisella commitilla on sen identifioiva merkkijono eli id, joka on [SHA-1](https://en.wikipedia.org/wiki/SHA-1)-muodossa. Komennon `git log` tulostuksessa id näkyy pitkänä merkkijonona, esimerkiksi tässä tapauksessa se on `51bf544c786a671c28f70713b6cb33d87cc38`. SHA-1 merkkijono yksilöi Git-tietokannassa olevat objektit.
 
@@ -243,7 +237,62 @@ Commitin luominen voi aluksi tuntua epäintuitiiviselta. Seuraava ajatusleikki s
 
 Komennon `git status` tulosteen yläreunassa näkyy: `On branch master`. Haarat, eli englanniksi _branchit_, mahdollistavat committien erottamisen toisistaan. Näin ollen on mahdollista kehittää uuden haaran sisältöä ilman, että menetetään toimiva versio ohjelmasta. Tavanomaisesti jokaisella projektilla on päähaara, joka on yleensä nimeltään`master`, ja jossa pidetään sen hetkistä toimivaa ja käytössä olevaa versiota.
 
-Usein haaroja käytetään niin, että päähaarasta erotetaan uuden toiminnallisuuden kehittämiseksi toinen haara, jossa lisäominaisuuksia kehitetään. Haarat eivät vaikuta toistensa tiloihin, eli uutta toiminnallisuutta voidaan kehittää riippumatta päähaarasta. Haaroissa olevat commitit ketjuttuvat haaran omalla aikajanalle ja eivät vaikuta toisiinsa. Kun ollaan todettu uusi ominaisuus toimivaksi, voidaan se yhdistää päähaaraan, ja poistaa uusi haara. Tässä osassa ei käsitellä haaroja sen enempää: riittää ymmärtää, että käytämme nyt vain master-, eli päähaaraa.
+Usein haaroja käytetään niin, että päähaarasta erotetaan uuden toiminnallisuuden kehittämiseksi toinen haara, jossa lisäominaisuuksia kehitetään. Haarat eivät vaikuta toistensa tiloihin, eli uutta toiminnallisuutta voidaan kehittää riippumatta päähaarasta. Haaroissa olevat commitit ketjuttuvat haaran omalla aikajanalle ja eivät vaikuta toisiinsa. Kun ollaan todettu uusi ominaisuus toimivaksi, voidaan se yhdistää päähaaraan, ja poistaa uusi haara.
+
+Luodaan uusi sivuhaara niminen branch komennolla `git branch sivuhaara`ja tarkastetaan projektin branchit komennolla `git branch`
+
+```
+$ git branch
+* master
+  sivuhaara
+```
+
+Siirrytään edellä luotuun branchiin komennolla `git checkout sivuhaara`ja luodaan sinne uusi tiedosto komennolla `touch tiedosto_sivuhaarasta.txt` Lisätään tiedostoon sisällöksi käyttäjänimi komennolla `whoami >> tiedosto_sivuhaarasta.txt`.
+
+Lisätään edellä luotu tiedosto seuraavaan committiin komennolla `git add tiedosto_sivuhaarasta.txt` ja tehdään uusi commit `git commit -m "Lisätty tiedosto sivuhaarassa"`
+
+Tarkastetaan tilanne komennolla `git log --oneline`
+
+````
+$ git log --oneline
+caeb5b7 (HEAD -> sivuhaara) Lisätty tiedosto sivuhaarassa
+0df3ddc (master) eka commit
+````
+
+Head eli pointer osoittaa nykyiseen sijaintiin eli viimeisimpään committiin sivuhaara nimisessä branchissa.
+
+Vaihdetaan takaisin alkuperäiseen Master nimiseen branchiin `git checkout master`. Varmistetaan että aktiivinen branch on master branch komennolla `git branch`. Tarkastetaan työkansion sisältö jolloin huomaamme että toisessa branchissa luotu tiedostoa _tiedosto_sivuhaarasta_ ei löydy työkansiosta. 
+
+Yhdistetään sivuhaara niminen branch master branchiin komennolla  `git merge sivuhaara`
+
+````
+$ git merge sivuhaara
+Updating 0df3ddc..caeb5b7
+Fast-forward
+ tiedosto_sivuhaarasta.txt | 1 +
+ 1 file changed, 1 insertion(+)
+ create mode 100644 tiedosto_sivuhaarasta.txt
+````
+
+Tarkastetaan tilanne komennolla `git log --oneline`
+
+````
+$ git log --oneline
+caeb5b7 (HEAD -> master, sivuhaara) Lisätty tiedosto sivuhaarassa
+0df3ddc eka commit
+````
+
+Head eli pointteri osoittaa nyt samaan committiin sekä master että sivuhaara brancheissa ja _tiedosto_sivuhaarasta.txt_ tiedosto löytyy työkansiosta.
+
+Poistetaan turha sivuhaara bransh komennolla `git branch -d  sivuhaara`
+
+````
+$ git branch -d sivuhaara
+Deleted branch sivuhaara (was caeb5b7).
+````
+
+
+
 
 <div class="exercise">
 <h3>Tehtävä 3: Committien harjoittelua</h3>
@@ -257,6 +306,7 @@ Usein haaroja käytetään niin, että päähaarasta erotetaan uuden toiminnalli
 <li>Lisää tietokoneen_nimi.txt tiedoston viimeiselle riville vielä päivämäärä komennolla <code>date >> tietokoneen_nimi.txt</code>, ja tee vielä yksi commit. Käytä muutoksen lisäämisessä seuraavaan committiin komentoa <code>git add -p</code>.</li>
 <li>Tarkista, että kaikki commitit näkyvät <code>git log</code>-komennolla.</li>
 </ol>
+
 
 <div class="note">
 Jos committia luodessa tulostuu virheviesti <code>error: cannot run : No such file or directory error: unable to start editor</code>, varmista, että olet konfiguroinut oletuseditorin oikein (tämä tehtiin tehtävässä 2).
